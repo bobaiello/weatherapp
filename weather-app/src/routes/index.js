@@ -10,7 +10,8 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   let city = req.body.city;
-  console.error('city is...' + city + '<<')
+  console.error('city is...' + city + '<<');
+  console.log('city is...' + city + '...');
   let url = config.url + `&q=${city}`;
 
   request(url, function(err, response, body) {
@@ -22,6 +23,7 @@ router.post('/', function(req, res, next) {
 
       if(weather.main == undefined) {
         console.error('No weather data was avalable for ' + city + '.');
+        console.log('no weather available for ' + city + '...');
         res.render('index', {weather: null, error: 'Error, please try again!'});
       } else {
         let weatherText = `It's ${weather.main.temp} degrees in ${weather.name}!`;
