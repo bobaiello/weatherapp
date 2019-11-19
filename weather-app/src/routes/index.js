@@ -10,8 +10,9 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   let city = req.body.city;
+  console.error('city is...' + city + '<<')
   let url = config.url + `&q=${city}`;
-  
+
   request(url, function(err, response, body) {
     if(err) {
       console.error('There was an error trying to lookup weather data for ' + city + '.');
