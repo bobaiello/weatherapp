@@ -12,7 +12,8 @@ router.post('/', function(req, res, next) {
   let city = req.body.city;
   console.error('city is...' + city + '<<');
   console.log('city is...' + city + '...');
-  let url = config.url + `&q=${city}`;
+  let url = config.url;
+  console.log('**url is...' + url);
 
   request(url, function(err, response, body) {
     if(err) {
